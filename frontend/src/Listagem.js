@@ -1,15 +1,4 @@
-import { useState, useEffect } from "react"
-import axios from "axios"
-
-function Listagem() {
-  const [lista, setLista] = useState([])
-  useEffect(()=>{
-    async function getProdutos() {
-      const response = await axios.get("http://localhost:4000/")
-      setLista(response.data)
-    }
-    getProdutos()
-  }, [])
+function Listagem({ lista, editarProduto, deletarProduto }) {
   return (
     <div className="container">
       <h2>Tabela</h2>
@@ -32,8 +21,8 @@ function Listagem() {
                   <td data-label="Estoque:">{produto.estoque}</td>
                   <td data-label="Telefone:">{produto.telefone}</td>
                   <td data-label="Opções:">
-                    <i className="fa-solid fa-pen-to-square"></i>
-                    <i className="fa-solid fa-trash"></i>
+                    <i onClick={()=>editarProduto(produto.id)} className="fa-solid fa-pen-to-square"></i>
+                    <i onClick={()=>deletarProduto(produto.id)} className="fa-solid fa-trash"></i>
                   </td>
                 </tr>
               )
