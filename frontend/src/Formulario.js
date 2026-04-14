@@ -1,8 +1,8 @@
-function Formulario({ id, nomeRef, precoRef, estoqueRef, telefoneRef, cadastrarProduto }) {
+function Formulario({ id, nomeRef, precoRef, estoqueRef, telefoneRef, cadastrarProduto, salvarEdicao }) {
   return (
     <div className="container">
       <h2>Formulário</h2>
-      <form onSubmit={cadastrarProduto}>
+      <form onSubmit={id ? salvarEdicao : cadastrarProduto}>
         <div className='campo-input'>
           <input ref={nomeRef} type='text' name='nome' placeholder='Nome' />
         </div>

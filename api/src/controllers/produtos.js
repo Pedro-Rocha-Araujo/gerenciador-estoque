@@ -10,6 +10,16 @@ export function getProdutos(request, response) {
   })                                       
 }
 
+export function getProduto(request, response) {
+  const q = `SELECT * FROM produtos WHERE id = ${request.params.id}`
+  db.query(q, (erro, data)=>{
+    if(erro) {
+      return response.json({Erro: "Erro ao pegar usuário!"})
+    }
+    return response.json(data)
+  })
+}
+
 export function addProduto(request, response) {
   let {nome, preco, estoque, telefone} = request.body
   const q = `INSERT INTO produtos (nome, preco, estoque, telefone) VALUES (?, ?, ?, ?) `
@@ -22,7 +32,14 @@ export function addProduto(request, response) {
 }
 
 export function editarProduto(request, response) {
-  
+  let { nome, preco, estoque, telefone } = request.body
+  const q = `UPDATE produtos SET nome = ?, preco = ?, estoque = ?, telefone = ? WHERE id = ?`
+  db.query(q, [nome, preco, estoque, telefone, request.params.id], (erro, data)=>{
+    if(erro){
+      return response.json({Erro: "Erro ao editar o produto!"})
+    }
+    return response.json(data)
+  })
 }
 
 export function deletarProduto(request, response) {

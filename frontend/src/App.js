@@ -43,8 +43,27 @@ function App() {
 
   async function editarProduto(id){
     setId(id)
-    const response = await axios.put("http://localhost:4000/"+id)
-    setId(null)
+    const response = await axios.get("http://localhost:4000/"+id)
+    nomeRef.current.value = response.data[0].nome
+    precoRef.current.value = response.data[0].preco
+    estoqueRef.current.value = response.data[0].estoque
+    telefoneRef.current.value = response.data[0].telefone
+  }
+
+  async function salvarEdicao() {
+    try {
+      const response = await axios.put("http://localhost:4000/"+id, {
+        nome: nomeRef.current.value,
+        preco: precoRef.current.value,
+        estoque: estoqueRef.current.value,
+        telefone: telefoneRef.current.value
+      })
+      setId(null)
+      toast.success("Produto editado com sucesso!")
+    } catch {
+      setId(null)
+      toast.error("Erro ao editar o produto")
+    }
   }
 
   async function deletarProduto(id){
@@ -69,6 +88,7 @@ function App() {
         <Formulario 
           id={id} 
           cadastrarProduto={cadastrarProduto}
+          salvarEdicao={salvarEdicao}
           nomeRef={nomeRef}
           precoRef={precoRef}
           estoqueRef={estoqueRef}
