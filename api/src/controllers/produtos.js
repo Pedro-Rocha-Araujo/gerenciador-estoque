@@ -11,11 +11,14 @@ export function getProdutos(request, response) {
 }
 
 export function addProduto(request, response) {
-  let nome = request.body.nome
-  let preco = request.body.preco
-  let estoque = request.body.estoque
-  let telefone = request.body.telefone
-  const q = `INSERT INTO produtos (${nome, preco, estoque, telefone})`
+  let {nome, preco, estoque, telefone} = request.body
+  const q = `INSERT INTO produtos (nome, preco, estoque, telefone) VALUES (?, ?, ?, ?) `
+  db.query(q, [nome, preco, estoque, telefone], (erro, data)=>{
+    if(erro) {
+      return response.json({Erro: "Erro ao inserir produto!"})
+    }
+    return response.json(data)
+  })
 }
 
 export function editarProduto(request, response) {

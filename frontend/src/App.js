@@ -22,7 +22,7 @@ function App() {
     getProdutos()
   }, [lista])
 
-  async function cadastrarUsuario(e) {
+  async function cadastrarProduto(e) {
     e.preventDefault()
     try{
       const response = await axios.post("http://localhost:4000/", {
@@ -31,9 +31,13 @@ function App() {
         estoque: estoqueRef.current.value,
         telefone: telefoneRef.current.value
       })  
-
+      nomeRef.current.value = ""
+      precoRef.current.value = ""
+      estoqueRef.current.value = ""
+      telefoneRef.current.value = ""
+      toast.success("Produto cadastrado com sucesso!")
     } catch{
-      toast.error("Erro ao cadastrar Usuário!")
+      toast.error("Erro ao cadastrar produto!")
     }
   }
 
@@ -64,7 +68,7 @@ function App() {
       <main>
         <Formulario 
           id={id} 
-          cadastrarUsuario={cadastrarUsuario}
+          cadastrarProduto={cadastrarProduto}
           nomeRef={nomeRef}
           precoRef={precoRef}
           estoqueRef={estoqueRef}
