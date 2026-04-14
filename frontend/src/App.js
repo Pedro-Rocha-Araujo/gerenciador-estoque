@@ -66,6 +66,14 @@ function App() {
     }
   }
 
+  function cancelarEdicao() {
+    setId(null)
+    nomeRef.current.value = ""
+    precoRef.current.value = ""
+    estoqueRef.current.value = ""
+    telefoneRef.current.value = ""
+  }
+
   async function deletarProduto(id){
     try{
       const response = await axios.delete("http://localhost:4000/"+id)
@@ -89,6 +97,7 @@ function App() {
           id={id} 
           cadastrarProduto={cadastrarProduto}
           salvarEdicao={salvarEdicao}
+          cancelarEdicao={cancelarEdicao}
           nomeRef={nomeRef}
           precoRef={precoRef}
           estoqueRef={estoqueRef}

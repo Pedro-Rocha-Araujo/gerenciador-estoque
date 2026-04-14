@@ -1,4 +1,4 @@
-function Formulario({ id, nomeRef, precoRef, estoqueRef, telefoneRef, cadastrarProduto, salvarEdicao }) {
+function Formulario({ id, nomeRef, precoRef, estoqueRef, telefoneRef, cadastrarProduto, salvarEdicao, cancelarEdicao }) {
   return (
     <div className="container">
       <h2>Formulário</h2>
@@ -23,6 +23,9 @@ function Formulario({ id, nomeRef, precoRef, estoqueRef, telefoneRef, cadastrarP
         </div>
 
         <button type='submit'>{id ? "Editar" : "Cadastrar"}</button>
+        {id && (
+          <button onClick={cancelarEdicao} className="red" type="button">Cancelar</button>
+        )}
       </form>
     </div>
   )

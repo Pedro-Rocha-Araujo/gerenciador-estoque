@@ -23,6 +23,7 @@ header{
   margin-bottom: 30px;
 }
 footer{
+  margin-top: 1rem;
   padding: 10px 0;
 }
 main{
@@ -49,6 +50,9 @@ button{
   background-color: rgb(28, 69, 255);
   color: #fff;
   border-radius: 16px;
+}
+button.red {
+  background-color: rgb(255, 37, 37);
 }
 /* =============Tabela============= */
 div.container {
