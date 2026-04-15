@@ -16,6 +16,5 @@ export function checarId(request, response, next) {
       return response.json({Erro: "Erro ao encontrar o ID"})
     }
     next()
-    return data
   })
 }

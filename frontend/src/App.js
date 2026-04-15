@@ -90,7 +90,7 @@ function App() {
   return (
     <div className="app">
       <header>
-        <h1>Gerenciador de Estoque</h1>
+        <h1><span>Gerenciador de</span> Estoque</h1>
       </header>
       <main>
         <Formulario 

@@ -4,21 +4,21 @@ function Formulario({ id, nomeRef, precoRef, estoqueRef, telefoneRef, cadastrarP
       <h2>Formulário</h2>
       <form onSubmit={id ? salvarEdicao : cadastrarProduto}>
         <div className='campo-input'>
-          <input ref={nomeRef} type='text' name='nome' placeholder='Nome' />
+          <input ref={nomeRef} type='text' required name='nome' placeholder='Nome' />
         </div>
 
         <div className='campo-input'>
-          <input ref={precoRef} className='menor' type='text' 
+          <input ref={precoRef} className='menor' type='number' required
           name='preco' placeholder='Preço' />
         </div>
 
         <div className='campo-input'>
-          <input ref={estoqueRef} className='menor' type='text' 
+          <input ref={estoqueRef} className='menor' type='number' required 
           name='estoque' placeholder='Estoque' />
         </div>
 
         <div className='campo-input'>
-          <input ref={telefoneRef} type='text' 
+          <input ref={telefoneRef} type='number' required 
           name='telefone' placeholder='Telefone' />
         </div>
 

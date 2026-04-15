@@ -6,6 +6,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <>
         <App />
-        <ToastContainer />
+        <ToastContainer autoClose={1000} />
     </>
 );
